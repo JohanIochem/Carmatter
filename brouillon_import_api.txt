@@ -1,0 +1,22 @@
+// Ajoutez la logique d'appel à l'API de Cars Image Background Removal
+        $apiKey = '2bec62b533msh25d1c9ff0d020cbp1ec5ecjsn8cbaa115064b';
+        $apiHost = 'cars-image-background-removal.p.rapidapi.com';
+
+        $httpClient = HttpClient::create();
+        $options = [
+            'headers' => [
+                'X-RapidAPI-Key' => $apiKey,
+                'X-RapidAPI-Host' => $apiHost,
+            ],
+        ];
+
+        try {
+            $response = $httpClient->request('GET', "https://cars-image-background-removal.p.rapidapi.com/v1/version", $options);
+            $data = $response->toArray();
+            dump($data); // Affichez les données de la réponse pour vérifier les résultats
+        } catch (TransportExceptionInterface $e) {
+            dump($e->getMessage());
+        }
+
+        // Traitez les données de l'API ici selon vos besoins
+            'api_data' => $data, // Envoyez les données à votre template Twig
